@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Official Judges Card</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{background:#f0f4f8;min-height:100vh;font-family:system-ui,-apple-system,sans-serif;color:#1a202c;padding:12px;display:flex;justify-content:center}
+.jc-wrap{width:100%;max-width:700px}
+.jc-card{background:#fff;border-radius:12px;border:1px solid #cbd5e0;box-shadow:0 4px 24px rgba(0,0,0,0.10);overflow:hidden;width:100%}
+.jc-header{background:#1e3a5f;padding:14px 18px 11px;text-align:center}
+.jc-header h1{color:#fff;font-size:clamp(16px,5vw,22px);font-weight:500;letter-spacing:2px;text-transform:uppercase}
+.jc-header p{color:#bee3f8;font-size:10px;letter-spacing:1.5px;margin-top:3px;text-transform:uppercase}
+.jc-sec-hdr{background:#2c5282;color:#bee3f8;font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:6px 14px;text-align:center}
+.jc-trial{padding:12px 14px;border-bottom:1px solid #e2e8f0;background:#f7fafc}
+.jc-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:8px}
+.jc-row:last-child{margin-bottom:0}
+.jc-field{display:flex;flex-direction:column;gap:3px;flex:1;min-width:100px;align-items:center}
+.jc-field label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;color:#4a5568;text-align:center;width:100%}
+.jc-field input{border:1.5px solid #a0aec0;border-radius:6px;background:#fff;font-family:inherit;font-size:13px;color:#1a202c;padding:6px 8px;outline:none;width:100%;text-align:center}
+.jc-field input:focus{border-color:#3182ce;box-shadow:0 0 0 3px rgba(49,130,206,0.15)}
+.jc-scale{padding:8px 14px;border-bottom:1px solid #e2e8f0;display:flex;flex-wrap:wrap;gap:4px 16px;background:#ebf4ff;justify-content:center}
+.jc-scale span{font-size:11px;color:#4a5568}
+.jc-scale b{font-weight:700;color:#1e3a5f}
+.jc-pref{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid #e2e8f0}
+.jc-pcol{padding:8px 10px}
+.jc-pcol:first-child{border-right:1px solid #e2e8f0}
+.jc-ptitle{font-size:9.5px;font-weight:700;color:#c53030;text-transform:uppercase;letter-spacing:0.7px;margin-bottom:4px;padding-bottom:2px;border-bottom:1px solid #e2e8f0;text-align:center}
+.jc-ptext{font-size:10px;color:#4a5568;line-height:1.65;text-align:left}
+.jc-runs{padding:10px 12px}
+.jc-dog{border:1.5px solid #cbd5e0;border-radius:10px;margin-bottom:12px;overflow:hidden;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
+.jc-dhdr{background:#2b6cb0;padding:9px 11px;display:flex;align-items:center;gap:8px;justify-content:center}
+.jc-dnum{background:rgba(255,255,255,0.2);color:#fff;font-size:9px;font-weight:700;letter-spacing:1px;padding:3px 7px;border-radius:4px;white-space:nowrap;text-transform:uppercase;flex-shrink:0}
+.jc-dname{flex:1;background:#fff;border:2px solid #fff;border-radius:6px;color:#1a202c;font-family:inherit;font-size:14px;font-weight:600;padding:6px 10px;outline:none;min-width:60px;text-align:center}
+.jc-dname::placeholder{color:#94a3b8;font-weight:400;font-size:12px}
+.jc-dname:focus{border-color:#fbbf24;box-shadow:0 0 0 2px rgba(251,191,36,0.3)}
+.jc-drem{background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);border-radius:5px;color:#fff;font-size:15px;cursor:pointer;padding:4px 9px;line-height:1;flex-shrink:0}
+.jc-drem:active{background:rgba(255,255,255,0.3)}
+.jc-dscore{display:flex;align-items:center;gap:8px;padding:7px 11px;border-bottom:1px solid #e2e8f0;background:#f0fff4;justify-content:center;flex-wrap:wrap}
+.jc-slbl{font-size:10px;font-weight:700;color:#4a5568;text-transform:uppercase;letter-spacing:0.4px}
+.jc-sval{font-size:26px;font-weight:700;min-width:55px;line-height:1;text-align:center}
+.jc-ztog{display:flex;align-items:center;gap:5px;cursor:pointer;background:#fff5f5;padding:5px 10px;border-radius:5px;border:1.5px solid #feb2b2}
+.jc-zbox{width:18px;height:18px;border:1.5px solid #fc8181;border-radius:3px;background:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#c53030;transition:all 0.1s}
+.jc-zbox.on{background:#c53030;color:#fff;border-color:#c53030}
+.jc-ztxt{font-size:10px;color:#c53030;font-weight:700}
+.jc-score-breakdown{font-size:10px;color:#718096;text-align:center;padding:2px 0 0;width:100%;line-height:1.5}
+.jc-dpen{display:flex;gap:6px;padding:7px 11px;border-bottom:1px solid #e2e8f0;align-items:center;flex-wrap:wrap;justify-content:center;background:#fef5e7}
+.jc-penb{display:flex;gap:4px;flex:1;min-width:80px;justify-content:center;align-items:center}
+.jc-penlbl{font-size:10px;font-weight:600;color:#744210;text-transform:uppercase;white-space:nowrap}
+.jc-penval{font-size:18px;font-weight:700;color:#744210;min-width:30px;text-align:center}
+.jc-penarr{font-size:11px;color:#744210;cursor:pointer;padding:4px 8px;background:#fff;border:1px solid #d6a87c;border-radius:3px;font-weight:600}
+.jc-penarr:active{background:#e2d4c4}
+.jc-notes{padding:7px 11px;border-bottom:1px solid #e2e8f0}
+.jc-noteslbl{font-size:9px;font-weight:700;color:#4a5568;text-transform:uppercase;letter-spacing:0.4px;margin-bottom:4px;display:block}
+.jc-notestxt{border:1.5px solid #cbd5e0;border-radius:5px;background:#fff;font-family:inherit;font-size:12px;color:#1a202c;padding:6px 8px;width:100%;outline:none;min-height:50px;resize:vertical}
+.jc-notestxt:focus{border-color:#3182ce;box-shadow:0 0 0 3px rgba(49,130,206,0.15)}
+.jc-actions{padding:8px 11px;display:flex;gap:6px;justify-content:center;flex-wrap:wrap;border-top:1px solid #e2e8f0}
+.jc-btn{padding:8px 16px;border-radius:6px;border:none;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;cursor:pointer;transition:all 0.2s;outline:none;flex:1;min-width:90px}
+.jc-btn-export{background:#48bb78;color:#fff;box-shadow:0 2px 6px rgba(0,0,0,0.1)}
+.jc-btn-export:active{background:#38a169;box-shadow:0 2px 2px rgba(0,0,0,0.1)}
+.jc-btn-print{background:#4299e1;color:#fff;box-shadow:0 2px 6px rgba(0,0,0,0.1)}
+.jc-btn-print:active{background:#3182ce;box-shadow:0 2px 2px rgba(0,0,0,0.1)}
+.jc-btn-clear{background:#fc8181;color:#fff;box-shadow:0 2px 6px rgba(0,0,0,0.1)}
+.jc-btn-clear:active{background:#f56565;box-shadow:0 2px 2px rgba(0,0,0,0.1)}
+@media print{body{background:#fff;padding:0}*{box-shadow:none;border-color:#000}
+.jc-wrap{max-width:100%}
+.jc-actions{display:none}}
+@media (max-width:480px){.jc-field{min-width:80px}
+.jc-btn{min-width:70px;padding:6px 12px;font-size:10px}
+.jc-dname{font-size:12px}}
+</style>
+</head>
+<body>
+<div class="jc-wrap">
+  <div class="jc-card">
+    
+    <!-- HEADER -->
+    <div class="jc-header">
+      <h1>Official Judges Card</h1>
+      <p>Trial Evaluation Form</p>
+    </div>
+
+    <!-- TRIAL INFORMATION -->
+    <div class="jc-trial">
+      <div class="jc-row">
+        <div class="jc-field">
+          <label>Trial #</label>
+          <input type="number" id="trialNum" placeholder="0000" min="0">
+        </div>
+        <div class="jc-field">
+          <label>Class</label>
+          <input type="text" id="trialClass" placeholder="Class Name">
+        </div>
+        <div class="jc-field">
+          <label>Handler</label>
+          <input type="text" id="trialHandler" placeholder="Handler Name">
+        </div>
+        <div class="jc-field">
+          <label>Judge</label>
+          <input type="text" id="trialJudge" placeholder="Judge Name">
+        </div>
+      </div>
+    </div>
+
+    <!-- SCORING SCALE -->
+    <div class="jc-scale">
+      <span><b>100</b> = Excellent</span>
+      <span><b>90-99</b> = Very Good</span>
+      <span><b>80-89</b> = Good</span>
+      <span><b>70-79</b> = Fair</span>
+      <span><b>&lt;70</b> = Below Par</span>
+    </div>
+
+    <!-- PREFERENCES -->
+    <div class="jc-pref">
+      <div class="jc-pcol">
+        <div class="jc-ptitle">Strengths</div>
+        <div class="jc-ptext">List outstanding qualities</div>
+      </div>
+      <div class="jc-pcol">
+        <div class="jc-ptitle">Weaknesses</div>
+        <div class="jc-ptext">Note areas for improvement</div>
+      </div>
+    </div>
+
+    <!-- RUNS SECTION -->
+    <div class="jc-sec-hdr">Runs</div>
+    <div class="jc-runs" id="runsContainer"></div>
+
+    <!-- BUTTONS -->
+    <div class="jc-actions">
+      <button class="jc-btn jc-btn-export" onclick="addRun()">+ Add Run</button>
+      <button class="jc-btn jc-btn-print" onclick="window.print()">Print</button>
+      <button class="jc-btn jc-btn-clear" onclick="resetForm()">Clear All</button>
+    </div>
+
+  </div>
+</div>
+
+<script>
+const runsData = [];
+
+function addRun() {
+  const runIndex = runsData.length;
+  runsData.push({
+    handlerName: '',
+    score: 85,
+    faults: 0,
+    eliminated: false,
+    notes: ''
+  });
+  renderRuns();
+}
+
+function removeRun(index) {
+  runsData.splice(index, 1);
+  renderRuns();
+}
+
+function updateRunField(index, field, value) {
+  runsData[index][field] = value;
+  renderRuns();
+}
+
+function renderRuns() {
+  const container = document.getElementById('runsContainer');
+  container.innerHTML = '';
+  
+  runsData.forEach((run, index) => {
+    const runEl = document.createElement('div');
+    runEl.className = 'jc-dog';
+    runEl.innerHTML = `
+      <div class="jc-dhdr">
+        <span class="jc-dnum">Run ${index + 1}</span>
+        <input type="text" class="jc-dname" placeholder="Handler Name" value="${run.handlerName}" 
+               onchange="updateRunField(${index}, 'handlerName', this.value)">
+        <button class="jc-drem" onclick="removeRun(${index})">✕</button>
+      </div>
+      
+      <div class="jc-dscore">
+        <span class="jc-slbl">Score</span>
+        <div style="display:flex;gap:4px;align-items:center;">
+          <button style="background:#e0e7ff;border:1px solid #c7d2fe;color:#4c51bf;padding:4px 8px;border-radius:3px;cursor:pointer;font-weight:700;" onclick="updateRunField(${index}, 'score', Math.max(0, ${run.score} - 1))">−</button>
+          <div class="jc-sval" style="color:#2c5aa0">${run.score}</div>
+          <button style="background:#e0e7ff;border:1px solid #c7d2fe;color:#4c51bf;padding:4px 8px;border-radius:3px;cursor:pointer;font-weight:700;" onclick="updateRunField(${index}, 'score', Math.min(100, ${run.score} + 1))">+</button>
+        </div>
+      </div>
+
+      <div class="jc-dpen">
+        <div class="jc-penb">
+          <span class="jc-penlbl">Faults</span>
+          <button class="jc-penarr" onclick="updateRunField(${index}, 'faults', Math.max(0, ${run.faults} - 1))">−</button>
+          <div class="jc-penval">${run.faults}</div>
+          <button class="jc-penarr" onclick="updateRunField(${index}, 'faults', ${run.faults} + 1)">+</button>
+        </div>
+        <div class="jc-ztog" onclick="updateRunField(${index}, 'eliminated', !${run.eliminated})">
+          <div class="jc-zbox ${run.eliminated ? 'on' : ''}">✓</div>
+          <span class="jc-ztxt">Eliminated</span>
+        </div>
+      </div>
+
+      <div class="jc-notes">
+        <label class="jc-noteslbl">Notes</label>
+        <textarea class="jc-notestxt" placeholder="Add notes for this run..." onchange="updateRunField(${index}, 'notes', this.value)">${run.notes}</textarea>
+      </div>
+    `;
+    container.appendChild(runEl);
+  });
+}
+
+function resetForm() {
+  if (confirm('Are you sure you want to clear all data?')) {
+    document.getElementById('trialNum').value = '';
+    document.getElementById('trialClass').value = '';
+    document.getElementById('trialHandler').value = '';
+    document.getElementById('trialJudge').value = '';
+    runsData.length = 0;
+    renderRuns();
+  }
+}
+
+// Initialize with one empty run
+addRun();
+</script>
+</body>
+</html>
